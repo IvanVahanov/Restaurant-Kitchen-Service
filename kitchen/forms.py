@@ -1,5 +1,5 @@
 from django import forms
-from .models import Dish, DishType, Ingredient
+from .models import Dish, DishType, Ingredient, Cook
 
 
 class DishForm(forms.ModelForm):
@@ -18,3 +18,12 @@ class IngredientForm(forms.ModelForm):
     class Meta:
         model = Ingredient
         fields = ['name']
+
+
+class CookForm(forms.ModelForm):
+    class Meta:
+        model = Cook
+        fields = ["username", "email", "password", "first_name", "last_name", "years_of_experience"]
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
