@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Add Dish Type{% endblock %}
+
+{% block content %}
+<h2>Add Dish Type</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Dish Type</button>
+    <a href="{% url 'kitchen:dish_type_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

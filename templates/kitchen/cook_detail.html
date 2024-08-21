@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Cook Detail{% endblock %}
+
+{% block content %}
+<h2>Cook: {{ cook.first_name }} {{ cook.last_name }}</h2>
+<p><strong>Years of Experience:</strong> {{ cook.years_of_experience }}</p>
+<p><strong>Email:</strong> {{ cook.email }}</p>
+<p><strong>Dishes:</strong>
+    {% for dish in cook.dish_set.all %}
+        {{ dish.name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+
+<a href="{% url 'kitchen:update_cook' pk=cook.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'kitchen:delete_cook' pk=cook.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'kitchen:cook_list' %}" class="btn btn-secondary">Back to list</a>
+{% endblock %}

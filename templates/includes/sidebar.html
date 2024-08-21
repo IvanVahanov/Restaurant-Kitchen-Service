@@ -1,0 +1,28 @@
+<div class="sidebar-heading">Kitchen Management</div>
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'kitchen:index' %}">
+            Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'kitchen:add_dish' %}">
+            Add Dish
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'kitchen:add_cook' %}">
+            Add Cook
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'kitchen:add_ingredient' %}">
+            Add Ingredient
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'kitchen:add_dish_type' %}">
+            Add Dish Type
+        </a>
+    </li>
+</ul>

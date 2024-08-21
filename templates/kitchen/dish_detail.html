@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dish Detail{% endblock %}
+
+{% block content %}
+<h2>Dish: {{ dish.name }}</h2>
+<p><strong>Description:</strong> {{ dish.description }}</p>
+<p><strong>Type:</strong> {{ dish.dish_type.name }}</p>
+<p><strong>Price:</strong> ${{ dish.price }}</p>
+<p><strong>Cooks:</strong>
+    {% for cook in dish.cooks.all %}
+        {{ cook.first_name }} {{ cook.last_name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+
+<a href="{% url 'kitchen:update_dish' pk=dish.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'kitchen:delete_dish' pk=dish.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'kitchen:dish_list' %}" class="btn btn-secondary">Back to list</a>
+{% endblock %}

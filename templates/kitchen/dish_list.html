@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Dish List{% endblock %}
+
+{% block content %}
+<h2>Dish List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dish in dishes %}
+        <tr>
+            <td>{{ dish.name }}</td>
+            <td>{{ dish.dish_type.name }}</td>
+            <td>${{ dish.price }}</td>
+            <td>
+                <a href="{% url 'kitchen:dish_detail' pk=dish.pk %}" class="btn btn-info btn-sm">View</a>
+                <a href="{% url 'kitchen:update_dish' pk=dish.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'kitchen:delete_dish' pk=dish.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'includes/pagination.html' %}
+{% endblock %}

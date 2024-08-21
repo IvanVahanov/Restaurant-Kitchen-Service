@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Cook List{% endblock %}
+
+{% block content %}
+<h2>Cook List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Years of Experience</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cook in cooks %}
+        <tr>
+            <td>{{ cook.first_name }} {{ cook.last_name }}</td>
+            <td>{{ cook.years_of_experience }}</td>
+            <td>
+                <a href="{% url 'kitchen:cook_detail' pk=cook.pk %}" class="btn btn-info btn-sm">View</a>
+                <a href="{% url 'kitchen:update_cook' pk=cook.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'kitchen:delete_cook' pk=cook.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include 'includes/pagination.html' %}
+{% endblock %}
