@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ingredient Detail{% endblock %}
+
+{% block content %}
+<h2>Ingredient: {{ ingredient.name }}</h2>
+<p><strong>Dishes:</strong> 
+    {% for dish in ingredient.dish_set.all %}
+        {{ dish.name }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+</p>
+
+<a href="{% url 'kitchen:update_ingredient' pk=ingredient.pk %}" class="btn btn-warning">Edit</a>
+<a href="{% url 'kitchen:delete_ingredient' pk=ingredient.pk %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'kitchen:ingredient_list' %}" class="btn btn-secondary">Back to list</a>
+{% endblock %}
